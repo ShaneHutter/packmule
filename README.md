@@ -122,7 +122,9 @@ Optional lowercase sub switches
 		database
 	* -u,	update local db
 * -U,	Update
-	* -d,	downgrade.  Specify a date in which to downgrade all packages.
+	* -d,	downgrade.  Specify a date in which to downgrade all packages,\
+		select packages, select package groups, or all packages from\
+		a repository.
 	* -f,	force
 	* -g,	package group
 	* -r,	reinstall all installed packages (emerge -DuNe much?)
