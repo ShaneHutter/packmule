@@ -484,8 +484,8 @@ def argparser():
     remove.add_argument(
             "-p"                                                    ,
             "--purge"                                               ,
-            action  = "store_true"                                  ,
-            help    = """
+            action      = "store_true"                              ,
+            help        = """
             Also remove any dependancy that is only required by the
             package being removed.
             """                                                     ,
@@ -502,6 +502,15 @@ def argparser():
             )
 
     # Sync
+    sync.add_argument(
+            "-S"  ,
+            "--sync"  ,
+            nargs   = "+"  ,
+            help    = """
+            Synchronize packages from a repository
+            """                     ,
+            )
+
     sync.add_argument(
             ""  ,
             ""  ,
@@ -527,6 +536,14 @@ def argparser():
             help    = """
             """                     ,
             )
+    sync.add_argument(
+            ""  ,
+            ""  ,
+            action  = "store_true"  ,
+            help    = """
+            """                     ,
+            )
+
 
     sync.add_argument(
             ""  ,
