@@ -60,3 +60,10 @@ A Python3 package manager for RHEL variaties
 	* site-packages location (obviously)
 * Service files
 	* ``/usr/lib/systemd/system``	
+
+
+## Arguments and switching
+* Mutually exclusive group, and required
+	* -S,	Sync
+	* -U,	Update
+	* -Q,	Query
