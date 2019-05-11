@@ -49,5 +49,7 @@ A Python3 package manager for RHEL variaties
 	* ``/var/lib/packmule/db``
 * Man pages
 	* ``/usr/share/man/man1``
+* Python
+	* site-packages location (obviously)
 * Service files
 	* ``/usr/lib/systemd/system``	
