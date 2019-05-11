@@ -76,6 +76,8 @@ Optional lowercase sub switches
 	* -g,	create / delete (with -d) / upgrade (-u) a package group in local repo
 	* -r,	build / delete ( -d ) a local package repository
 	* -u,	upgrade a package in a local repository
+* -D,	Databases
+	* -c,	clean local database metadata
 * -I,	Info	(local)
 	* -d,	package details
 	* -g,	package group
@@ -89,6 +91,7 @@ Optional lowercase sub switches
 	* -r,	repository information
 	* -u,	update local db
 * -R,	Remove
+	* -c,	clean cache
 	* -f,	force
 	* -g,	package group
 	* -p,	purge
