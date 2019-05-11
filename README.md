@@ -7,9 +7,16 @@ A Python3 package manager for RHEL variaties
 	* Read yum.repos.d
 * Use switching closer to pacman
 	* You don't always need to sync repos
+* Requires modern SystemD (i.e. systemctl)
+	* Add a configurable auto-update service
+		* packages
+		* just db
+		* alerts and confirmation ( all or package specific )
+		* exclude packages
 
 # Dependancies
 * python >= 3.6 (preferably 3.7 to be honest)
+* systemd >= 62
 * curl
 * sqlite3
 
@@ -22,5 +29,8 @@ A Python3 package manager for RHEL variaties
 	* Repos
 		* ``/etc/packmule/repos.d/``
 		* ``/etc/yum.repos.d/``
-	* DBs
-		* ``/var/lib/packmule/db``
+* DBs
+	* ``/var/lib/packmule/db``
+
+* Service files
+	* ``/usr/lib/systemd/system``	
