@@ -3,7 +3,9 @@ A Python3 package manager for RHEL variaties
 
 ## Concepts
 * Entirely Python3 dependant
-* Similar features to Yum
+* Similar features to Yum, and compatibilty
+	* Import settings from yum configurations
+		* A drop-in replacement for yum using Python3
 	* Read yum.repos.d
 * Use switching closer to pacman
 	* You don't always need to sync repos
@@ -14,8 +16,6 @@ A Python3 package manager for RHEL variaties
 		* alerts and confirmation ( all or package specific )
 		* exclude packages
 * Ensure compatibility with Cloudlinux alt-python
-* Import settings from yum configurations
-	* A drop-in replacement for yum using Python3
 
 
 ## Dependancies
