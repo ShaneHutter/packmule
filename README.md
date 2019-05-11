@@ -75,8 +75,12 @@ A Python3 package manager for RHEL variaties
 		* -u,	update local db
 	* -Q,	Query	(remote)
 		* -g,	package group
-	* -I,	Info	(local)
 		* -l,	list installed
+		* -u,	update local db
+	* -I,	Info	(local)
+		* -g,	package group
+		* -l,	list installed
+		* -u,	update local db
 	* -R,	Remove
 		* -g,	package group
 		* -p,	purge
