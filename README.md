@@ -138,7 +138,7 @@ Optional lowercase sub switches
 	* -a,	display all information, mutually exclusive with every other\
 		version information switch.
 	* -d,	description
-	* -w,	author (writter) details
+	* -w,	author (written by) details
 	* ect...
 
 ## Additional Notes:
