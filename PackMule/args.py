@@ -482,19 +482,23 @@ def argparser():
             )
 
     remove.add_argument(
-            ""  ,
-            ""  ,
-            action  = "store_true"  ,
+            "-p"                                                    ,
+            "--purge"                                               ,
+            action  = "store_true"                                  ,
             help    = """
-            """                     ,
+            Also remove any dependancy that is only required by the
+            package being removed.
+            """                                                     ,
             )
 
     remove.add_argument(
-            ""  ,
-            ""  ,
-            action  = "store_true"  ,
+            "-r"                                                            ,
+            "--repo"                                                        ,
+            action  = "store_true"                                          ,
             help    = """
-            """                     ,
+            Remove a locally hosted repository.  This is interchangeable
+            with running Create delete repo (-Cdr).
+            """                                                             ,
             )
 
     # Sync
