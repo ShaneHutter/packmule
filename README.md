@@ -128,7 +128,7 @@ Optional lowercase sub switches
 		dependancies, but I think it's worth it.
 	* -f,	force
 	* -g,	package group
-	* -r,	reinstall all installed packages (emerge -DuNe much?)
+	* -r,	reinstall all installed packages (emerge -DuNe @world much?)
 	* -u,	update local db
 * -V,	Version (Display packmule version, and other program information)
 	* with no arguments (Version information)
