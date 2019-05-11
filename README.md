@@ -69,20 +69,30 @@ A Python3 package manager for RHEL variaties
 Capitals are in a mutually exclusive group, and required\
 Optional lowercase sub switches
 
+* -C,	Create/manage repository
+	* -r,	build / delete ( -d ) a local package repository
+	* -g,	create / delete (with -d) / upgrade (-u) a package group in local repo
+	* -f,	force
+	* -a,	add a package to the repository
+	* -u,	upgrade a package in a local repository
+	* -d,	delete a package (or package group / repo)
 * -I,	Info	(local)
 	* -d,	package details
 	* -g,	package group
 	* -l,	list installed
+	* -r,	repository information
 	* -u,	update local db
 * -Q,	Query	(remote)
 	* -d,	package details
 	* -g,	package group
 	* -l,	list installed
+	* -r,	repository information
 	* -u,	update local db
 * -R,	Remove
 	* -f,	force
 	* -g,	package group
 	* -p,	purge
+	* -r,	delete local repository (also in -C, your choice mate)
 * -S,	Sync
 	* -f,	force
 	* -g,	package group
