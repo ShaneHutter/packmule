@@ -29,6 +29,7 @@ A Python3 package manager for RHEL variaties
 	* curl	(RHEL core)
 	* sqlite3 (RHEL core)
 	* gpgme (RHEL core)
+	* openssl (RHEL core)
 * Distro
 	* CentOS >= 7.6
 	* RHEL >= 7.6
