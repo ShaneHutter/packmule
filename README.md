@@ -26,6 +26,8 @@ A Python3 package manager for RHEL variaties
 		* Unique metadata?
 			* repo.pmmd (PackMule Meta-Data)
 	* Repository generating tools
+* Queue multiple operations in one command
+	* ``packmule -S vim -Rf nano``
 
 
 ## Dependancies
