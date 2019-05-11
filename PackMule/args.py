@@ -16,6 +16,489 @@ PackMule
 
 from .          import PROGRAM_INFO
 from argparse   import ArgumentParser
+from re         import match
+from sys        import argv
+
+
+'''
+Notes:
+    argparse can't handle the switching style I prefer.
+    I will have to build the parser from the ground up.
+'''
+
+
+SWITCH_TYPES    = {
+        "short" : "-"   ,
+        "long"  : "--"  ,
+        }
+IS_LONG_SWITCH  = {
+        "short" : False ,
+        "long"  : True  ,
+        }
+
+PRIMARY_SWITCHES   = {
+        "B" : {
+            "name"      : "build"                                   , 
+            "one arg"   : False                                     ,
+            "bool"      : False                                     ,
+            "help"      : """
+            Build RPM packages.  Pass package rott directories as 
+            arguments.
+            """                                                     ,
+            }   ,
+        "C" : {
+            "name"      : "create"                                      ,
+            "one arg"   : True                                          ,
+            "bool"      : False                                         ,
+            "help"      : """
+            Specify the repository, or package group (-g) which will be
+            operated upon.
+            """                                                         ,
+            }   ,
+        "D" : {
+            "name"      : "databases"                   ,
+            "one arg"   : False                         ,
+            "bool"      : False                         ,
+            "help"      : """
+            Manage local PackMule databases and caches.
+            """                                         ,
+            }   ,
+        "I" : {
+            "name"  : "info"                            ,
+            "one arg" : False                           ,
+            "bool"      : False                         ,
+            "help"  : """
+            Manage local PackMule databases and caches.
+            """                                         ,
+            }   ,
+        "Q" : { 
+            "name"      : "query"                                       ,
+            "one arg"   : False                                         ,
+            "bool"      : False                                         ,
+            "help"      : """
+            Query remote details from packages and package groups in a
+            remotely hosted repository.  Also, query information for
+            remotely hosted repositories
+            """                                                         ,
+            }   ,
+        "R" : { 
+            "name"      : "remove"                                      ,
+            "one arg"   : False                                         ,
+            "bool"      : False                                         ,
+            "help"      : """
+            Remove a package or package group which has been installed
+            on the local system.
+            """                                                         ,
+            }   ,
+        "S" : {
+            "name"      : "sync"                    ,
+            "one arg"   : False                     ,
+            "bool"      : False                     ,
+            "help"      : """
+            Synchronize packages from a repository
+            """                                     ,
+            }   ,
+        "U" : {
+            "name"      : "update"                      ,
+            "one arg"   : False                         ,
+            "bool"      : False                         ,
+            "help"      : """
+            Update packages, and repository databases.
+            """                                         ,
+            }   ,
+        "V" : { 
+            "name"      : "version"                                     ,
+            "one arg"   : False                                         ,
+            "bool"      : True                                          ,
+            "help"  : """
+            Display version information, or other details on the current
+            installed version of PackMule.  If no additional switches 
+            are provided, then only the version number is displayed.
+            This operation will queue at the end of all other operations.
+            """                                                         ,
+            }   ,
+        }
+
+"""
+    Secondary switches all store a bool.
+    Some conflict with each other.
+    Info and query contain repo and package group switches.  These do
+    not conflict.  If the switch is present, and the repo or package group
+    can be found, then ignore if a repo is not a package, etc.  If the
+    switch is not present, then show that a package (etc...) is not found.
+"""
+SECONDARY_SWITCHES  = {
+        PRIMARY_SWITCHES[ "B" ] : {    ,
+        PRIMARY_SWITCHES[ "C" ] : {
+            "a" : {
+                "value"     : bool()                ,
+                "conflicts" : None                  ,
+                "name"      : "pkg add"             ,
+                "help"      : """
+                Add a package to local repository
+                """                                 ,
+                }   ,
+            "d" : {
+                "value"     : bool()                                ,
+                "conflicts" : None                                  ,
+                "name"      : "delete"                              ,
+                "help"      : """
+                Delete a package from the local repository.  
+                Additionally, this may be paired with group (-g) or 
+                repo (-r).
+                """                                                 ,
+                }   ,
+            "f" : {
+                "value"     : bool()                                    ,
+                "conflicts" : None                                      ,
+                "name"      : "force"                                   ,
+                "help"      : """
+                Force an operation.  I'm not 100% on what this will 
+                entail with each primary swith.
+                """                                                     ,
+                }   ,
+            "g" : {    ,
+                "value"     : bool()        ,
+                "conflicts" : ( "r" , )     ,
+                "name"      : "pkg group"   ,
+                "help"      : """
+                Create or operate upon a package group in the repository.
+                Additionally, add delete(-d) or upgrade (-u) to remove
+                or upgrade the packages in the package group.
+                """                         ,
+                }    ,
+            "r" : {    ,
+                "value"     : bool()                                    ,
+                "conflicts" : ( "g" , )                                 ,
+                "name"      : "repo"                                    ,
+                "help"      : """
+                Build a new repository, or delete (-d) an existing
+                repository, from the local system.  Create will manage 
+                the given repository if this is not specified.
+                """                                                     ,
+                }    ,
+            "u" : {    ,
+                "value"     : bool()    ,
+                "conflicts" : None      ,
+                "name"      : "" ,
+                "help"      : """
+                """                     ,
+                }    ,
+            }                           ,
+        PRIMARY_SWITCHES[ "D" ] : {
+            "c" : {    ,
+                "value"     : bool()    ,
+                "conflicts" : None      ,
+                "name"      : "" ,
+                "help"      : """
+                """                     ,
+                }    ,
+            "e" : {    ,
+                "value"     : bool()    ,
+                "conflicts" : None      ,
+                "name"      : "" ,
+                "help"      : """
+                """                     ,
+                }    ,
+            "f" : {    ,
+                "value"     : bool()    ,
+                "conflicts" : None      ,
+                "name"      : "" ,
+                "help"      : """
+                """                     ,
+                }    ,
+            }                           ,
+        PRIMARY_SWITCHES[ "I" ] : {
+            "d" : {    ,
+                "value"     : bool()    ,
+                "conflicts" : None      ,
+                "name"      : "" ,
+                "help"      : """
+                """                     ,
+                }    ,
+            "g" : {    ,
+                "value"     : bool()    ,
+                "conflicts" : None      ,
+                "name"      : "" ,
+                "help"      : """
+                """                     ,
+                }    ,
+            "l" : {    ,
+                "value"     : bool()    ,
+                "conflicts" : None      ,
+                "name"      : "" ,
+                "help"      : """
+                """                     ,
+                }    ,
+            "r" : {    ,
+                "value"     : bool()    ,
+                "conflicts" : None      ,
+                "name"      : "" ,
+                "help"      : """
+                """                     ,
+                }    ,
+            "u" : {    ,
+                "value"     : bool()    ,
+                "conflicts" : None      ,
+                "name"      : "" ,
+                "help"      : """
+                """                     ,
+                }    ,
+            "w" : {    ,
+                "value"     : bool()    ,
+                "conflicts" : None      ,
+                "name"      : "" ,
+                "help"      : """
+                """                     ,
+                }    ,
+            }                           ,
+        PRIMARY_SWITCHES[ "Q" ] : {
+            "d" : {    ,
+                "value"     : bool()    ,
+                "conflicts" : None      ,
+                "name"      : "" ,
+                "help"      : """
+                """                     ,
+                }    ,
+            "g" : {    ,
+                "value"     : bool()    ,
+                "conflicts" : None      ,
+                "name"      : "" ,
+                "help"      : """
+                """                     ,
+                }    ,
+            "l" : {    ,
+                "value"     : bool()    ,
+                "conflicts" : None      ,
+                "name"      : "" ,
+                "help"      : """
+                """                     ,
+                }    ,
+            "r" : {    ,
+                "value"     : bool()    ,
+                "conflicts" : None      ,
+                "name"      : "" ,
+                "help"      : """
+                """                     ,
+                }    ,
+            "u" : {    ,
+                "value"     : bool()    ,
+                "conflicts" : None      ,
+                "name"      : "" ,
+                "help"      : """
+                """                     ,
+                }    ,
+            "w" : {    ,
+                "value"     : bool()    ,
+                "conflicts" : None      ,
+                "name"      : "" ,
+                "help"      : """
+                """                     ,
+                }    ,
+            }                           ,
+        PRIMARY_SWITCHES[ "R" ] : {
+            "c" : {    ,
+                "value"     : bool()    ,
+                "conflicts" : None      ,
+                "name"      : "" ,
+                "help"      : """
+                """                     ,
+                }    ,
+            "f" : {    ,
+                "value"     : bool()    ,
+                "conflicts" : None      ,
+                "name"      : "" ,
+                "help"      : """
+                """                     ,
+                }    ,
+            "g" : {    ,
+                "value"     : bool()    ,
+                "conflicts" : None      ,
+                "name"      : "" ,
+                "help"      : """
+                """                     ,
+                }    ,
+            "l" : {    ,
+                "value"     : bool()    ,
+                "conflicts" : None      ,
+                "name"      : "" ,
+                "help"      : """
+                """                     ,
+                }    ,
+            "p" : {    ,
+                "value"     : bool()    ,
+                "conflicts" : None      ,
+                "name"      : "" ,
+                "help"      : """
+                """                     ,
+                }    ,
+            "r" : {    ,
+                "value"     : bool()    ,
+                "conflicts" : None      ,
+                "name"      : "" ,
+                "help"      : """
+                """                     ,
+                }    ,
+            }                           ,
+        PRIMARY_SWITCHES[ "S" ] : {
+            "" : {    ,
+                "value"     : bool()    ,
+                "conflicts" : None      ,
+                "name"      : "" ,
+                "help"      : """
+                """                     ,
+                }    ,
+            "" : {    ,
+                "value"     : bool()    ,
+                "conflicts" : None      ,
+                "name"      : "" ,
+                "help"      : """
+                """                     ,
+                }    ,
+            "" : {    ,
+                "value"     : bool()    ,
+                "conflicts" : None      ,
+                "name"      : "" ,
+                "help"      : """
+                """                     ,
+                }    ,
+            "" : {    ,
+                "value"     : bool()    ,
+                "conflicts" : None      ,
+                "name"      : "" ,
+                "help"      : """
+                """                     ,
+                }    ,
+            "" : {    ,
+                "value"     : bool()    ,
+                "conflicts" : None      ,
+                "name"      : "" ,
+                "help"      : """
+                """                     ,
+                }    ,
+            "" : {    ,
+                "value"     : bool()    ,
+                "conflicts" : None      ,
+                "name"      : "" ,
+                "help"      : """
+                """                     ,
+                }    ,
+            }                           ,
+        PRIMARY_SWITCHES[ "U" ] : {
+            "" : {    ,
+                "value"     : bool()    ,
+                "conflicts" : None      ,
+                "name"      : "" ,
+                "help"      : """
+                """                     ,
+                }    ,
+            "" : {    ,
+                "value"     : bool()    ,
+                "conflicts" : None      ,
+                "name"      : "" ,
+                "help"      : """
+                """                     ,
+                }    ,
+            "" : {    ,
+                "value"     : bool()    ,
+                "conflicts" : None      ,
+                "name"      : "" ,
+                "help"      : """
+                """                     ,
+                }    ,
+            "" : {    ,
+                "value"     : bool()    ,
+                "conflicts" : None      ,
+                "name"      : "" ,
+                "help"      : """
+                """                     ,
+                }    ,
+            "" : {    ,
+                "value"     : bool()    ,
+                "conflicts" : None      ,
+                "name"      : "" ,
+                "help"      : """
+                """                     ,
+                }    ,
+            }                           ,
+        PRIMARY_SWITCHES[ "V" ] : {
+            "" : {
+                "value"     : bool()    ,
+                "conflicts" : None      ,
+                "name"      : "" ,
+                "help"      : """
+                """                     ,
+                }   ,
+            "" : {
+                "value"     : bool()    ,
+                "conflicts" : None      ,
+                "name"      : "" ,
+                "help"      : """
+                """                     ,
+                }   ,
+            "" : {
+                "value"     : bool()    ,
+                "conflicts" : None      ,
+                "name"      : "" ,
+                "help"      : """
+                """                     ,
+                }   ,
+            }       ,
+        }
+
+
+
+
+def _switch_parse( arg ):
+    """
+        If the argument is a switch, return a dictionary of the current
+        switch's properties, or else return None.
+
+        switch_properties dict
+            primary : primary switch name
+            secondary: dict()
+
+    """
+    # Determine if switch is long, short, or not a switch
+    switch_len , switch_long    = int() , bool()
+    for switch_type in SWITCH_TYPES:
+        if arg[
+                :SWITCH_TYPES[ switch_type ]
+                ] == SWITCH_TYPES[ switch_type ] and len( 
+                        SWITCH_TYPES[ switch_type ]
+                        ) >= switch_len:
+            switch_len , switch_long = len(
+                    SWITCH_TYPES[ switch_type ]
+                    ) , IS_LONG_SWITCH[ switch_type ]
+        else:
+            # It's not a switch
+            return False
+
+        # d
+        if
+
+
+
+    if arg[
+            :len(
+                SWITCH_TYPES[ "short" ]
+                )
+            ] == SWITCH_TYPES[ "short" ]:
+        if arg[
+                :len(
+                    SWITCH_TYPES[ "long" ]
+                    )
+                ] == SWITCH_TYPES[ "long" ]:
+            
+        else:
+            return ( True , False )
+    else:
+        return False
+
+
+
+
+####  DEPRICATED - argparse is not suitable #####
 
 # Declare variables and constants
 PRIMARY_SWITCHES    = {
