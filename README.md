@@ -54,6 +54,8 @@ A Python3 package manager for RHEL variaties
 		* ``/etc/yum.repos.d/``
 * DBs
 	* ``/var/lib/packmule/db``
+* Logs
+	* ``/var/log/packmule``
 * Man pages
 	* ``/usr/share/man/man1``
 * Python
