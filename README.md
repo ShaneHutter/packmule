@@ -68,7 +68,10 @@ A Python3 package manager for RHEL variaties
 
 ## Arguments and switching
 
-Capitals are in a mutually exclusive group, and required\
+Capitals are the primary switched and are required\
+Primary switches can be combined (possible?), which\
+will cause tasks to queue up, and be performed in\
+the most ideal order.\
 Optional lowercase sub switches
 
 * -B,	Build an rpm package
