@@ -70,12 +70,12 @@ Capitals are in a mutually exclusive group, and required\
 Optional lowercase sub switches
 
 * -C,	Create/manage repository
-	* -r,	build / delete ( -d ) a local package repository
-	* -g,	create / delete (with -d) / upgrade (-u) a package group in local repo
-	* -f,	force
 	* -a,	add a package to the repository
-	* -u,	upgrade a package in a local repository
 	* -d,	delete a package (or package group / repo)
+	* -f,	force
+	* -g,	create / delete (with -d) / upgrade (-u) a package group in local repo
+	* -r,	build / delete ( -d ) a local package repository
+	* -u,	upgrade a package in a local repository
 * -I,	Info	(local)
 	* -d,	package details
 	* -g,	package group
