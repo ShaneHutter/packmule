@@ -73,6 +73,7 @@ A Python3 package manager for RHEL variaties
 		* -f,	force
 	* -Q,	Query
 		* -g,	package group
+		* -l,	list installed
 	* -R,	Remove
 		* -g,	package group
 		* -p,	purge
