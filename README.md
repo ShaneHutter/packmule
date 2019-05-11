@@ -16,9 +16,9 @@ A Python3 package manager for RHEL variaties
 
 # Dependancies
 * python >= 3.6 (preferably 3.7 to be honest)
-* systemd >= 62
-* curl
-* sqlite3
+* systemd >= 62 (RHEL core)
+* curl	(RHEL core)
+* sqlite3 (RHEL core)
 * Distro
 	* CentOS >= 7.6
 	* RHEL >= 7.6
