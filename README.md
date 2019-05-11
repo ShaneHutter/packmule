@@ -124,7 +124,8 @@ Optional lowercase sub switches
 * -U,	Update
 	* -d,	downgrade.  Specify a date in which to downgrade all packages,\
 		select packages, select package groups, or all packages from\
-		a repository.
+		a repository.  This may become a nightmare when dealing with\
+		dependancies, but I think it's worth it.
 	* -f,	force
 	* -g,	package group
 	* -r,	reinstall all installed packages (emerge -DuNe much?)
