@@ -156,23 +156,24 @@ def argparser():
     '''
     # Build
     build.add_argument(
-            "-B"            ,
-            "--build"       ,
-            nargs  = "1"    ,
-            help    = """
-            """             ,
+            "-B"                    ,
+            "--build"               ,
+            nargs       = "1"       ,
+            help        = """
+            Build an RPM package.
+            """                     ,
             )
 
     build.add_argument(
             "-r"                                                        ,
             "--pkg-root"                                                ,
-            action  = "store_true"                                      ,
+            action      = "store_true"                                  ,
             required    = True                                          ,
             '''
                 Make sure that this being required will not also make
                 -B a required argument!
             '''
-            help    = """
+            help        = """
             Root directory of files to be packaged.  This is required.
             """                                                         ,
             )
@@ -181,8 +182,8 @@ def argparser():
     create.add_argument(
             "-C"                                                        ,
             "--create"                                                  ,
-            nargs   = "1"                                               ,
-            help    = """
+            nargs       = "1"                                           ,
+            help        = """
             Specify the repository, or package group (-g) which will be
             operated upon.
             """                                                         ,
@@ -191,8 +192,8 @@ def argparser():
     create.add_argument(
             "-a"                                ,
             "-add-pkg"                          ,
-            action  = "store_true"              ,
-            help    = """
+            action      = "store_true"          ,
+            help        = """
             Add a package to local repository
             """                                 ,
             )
@@ -209,8 +210,8 @@ def argparser():
     create_du.add_argument(
             "-d"                                                        ,
             "--delete"                                                  ,
-            action  = "store_true"                                      ,
-            help    = """
+            action      = "store_true"                                  ,
+            help        = """
             Delete a package from the local repository.  Additionally,
             this may be paired with group (-g) or repo (-r).
             """                                                         ,
@@ -219,8 +220,8 @@ def argparser():
     create.add_argument(
             "-f"                                                        ,
             "--force"                                                   ,
-            action  = "store_true"                                      ,
-            help    = """
+            action      = "store_true"                                  ,
+            help        = """
             Force an operation.  I'm not 100% on what this will entail
             witch each primary switch.
             """                                                         ,
@@ -230,8 +231,8 @@ def argparser():
             "-g"                                                        ,
             "--pkg-group"                                               ,
              # List packages to operate upon
-            action  = "+"                                               , 
-            help    = """
+            action      = "+"                                           , 
+            help        = """
             Create or operate upon a package group in the repository.
             Additionally, add delete(-d) or upgrade (-u) to remove
             or upgrade the packages in the package group.
@@ -252,8 +253,8 @@ def argparser():
     create_du.add_argument(
             "-u"                                                        ,
             "--upgrade"                                                 ,
-            action  = "store_true"                                      ,
-            help    = """
+            action      = "store_true"                                  ,
+            help        = """
             Upgrade a package in a repostory, or group (-g) on the
             local system.
             """                                                         ,
@@ -261,11 +262,12 @@ def argparser():
 
     # Databases
     databases.add_argument(
-            "-D"  ,
-            "--databases"  ,
-            action  = "store_true"  ,
-            help    = """
-            """                     ,
+            "-D"                                        ,
+            "--databases"                               ,
+            action          = "store_true"              ,
+            help            = """
+            Manage local PackMule databases and caches.
+            """                                         ,
             )
             
     databases.add_argument(
@@ -278,19 +280,19 @@ def argparser():
             )
             
     databases.add_argument(
-            "-e"                    ,
-            "--empty"               ,
-            action  = "store_true"  ,
-            help    = """
+            "-e"                        ,
+            "--empty"                   ,
+            action      = "store_true"  ,
+            help        = """
             Empty the PackMule cache.
-            """                     ,
+            """                         ,
             )
 
     databases.add_argument(
             "-f"                                                        ,
             "--force"                                                   ,
-            action  = "store_true"                                      ,
-            help    = """
+            action      = "store_true"                                  ,
+            help        = """
             Force an operation.  I'm not 100% on what this will entail
             witch each primary switch.
             """                                                         ,
@@ -309,12 +311,12 @@ def argparser():
             )
 
     info.add_argument(
-            "-d"                    ,
-            "--details"             ,
-            action  = "store_true"  ,
-            help    = """
+            "-d"                        ,
+            "--details"                 ,
+            action      = "store_true"  ,
+            help        = """
             Display package details.
-            """                     ,
+            """                         ,
             )
     '''
     Details, package group, and repo are not mutually exclusive. 
@@ -327,8 +329,8 @@ def argparser():
     info.add_argument(
             "-g"                            ,
             "--pkg-group"                   ,
-            action  = "store_true"          ,
-            help    = """
+            action          = "store_true"  ,
+            help            = """
             Display package group details.
             """                             ,
             )
@@ -336,8 +338,8 @@ def argparser():
     info.add_argument(
             "-l"                                                        ,
             "--list-installed"                                          ,
-            action  = "store_true"                                      ,
-            help    = """
+            action              = "store_true"                          ,
+            help                = """
             List the files installed from teh provided package.  This
             can also be used with package group (-g) and repo (-r).
             """                                                         ,
@@ -366,8 +368,8 @@ def argparser():
     query.add_argument(
             "-Q"                                                        ,
             "--query"                                                   ,
-            nargs  = "+"                                                ,
-            help    = """
+            nargs       = "+"                                           ,
+            help        = """
             Query remote details from packages and package groups in a
             remotely hosted repository.  Also, query information for
             remotely hosted repositories.
@@ -375,12 +377,12 @@ def argparser():
             )
 
     query.add_argument(
-            "-d"                    ,
-            "--details"             ,
-            action  = "store_true"  ,
-            help    = """
+            "-d"                        ,
+            "--details"                 ,
+            action      = "store_true"  ,
+            help        = """
             Display package details.
-            """                     ,
+            """                         ,
             )
     '''
     Details, package group, and repo are not mutually exclusive. 
@@ -393,8 +395,8 @@ def argparser():
     query.add_argument(
             "-g"                            ,
             "--pkg-group"                   ,
-            action  = "store_true"          ,
-            help    = """
+            action          = "store_true"  ,
+            help            = """
             Display package group details.
             """                             ,
             )
@@ -402,8 +404,8 @@ def argparser():
     query.add_argument(
             "-l"                                                        ,
             "--list-installed"                                          ,
-            action  = "store_true"                                      ,
-            help    = """
+            action              = "store_true"                          ,
+            help                = """
             List the files installed from teh provided package.  This
             can also be used with package group (-g) and repo (-r).
             """                                                         ,
@@ -421,8 +423,8 @@ def argparser():
     query.add_argument(
             "-u"                                                    ,
             "--update"                                              ,
-            action  = "store_true"                                  ,
-            help    = """
+            action      = "store_true"                              ,
+            help        = """
             Update local repository databases prior to checking the
             details of any provided argument.
             """                                                     ,
@@ -432,8 +434,8 @@ def argparser():
     remove.add_argument(
             "-R"                                                        ,
             "--remove"                                                  ,
-            action  = "store_true"                                      ,
-            help    = """
+            action      = "store_true"                                  ,
+            help        = """
             Remove a package or package group which has been installed
             on the local system.
             """                                                         ,
