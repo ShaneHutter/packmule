@@ -1,0 +1,14 @@
+#!/usr/bin/env python3
+"""
+PackMule
+    packmule
+
+    Written By:
+        Shane Hutter
+
+    Description:
+        A Python3 based wrapper and package manager for RHEL based Linux distributions.
+
+    License:
+        GNU GPLv3
+"""
