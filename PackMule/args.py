@@ -483,8 +483,12 @@ def _switch_parse( arg ):
         switch's properties, or else return None.
 
         switch_properties dict
-            primary : primary switch name
-            secondary: dict()
+            primary : {
+                args        : tuple() | str() | bool()  ,   
+                secondary   : {
+                    switch  : bool()    ,
+                    }   ,
+                }
 
     """
     # Determine if switch is long, short, or not a switch
@@ -502,8 +506,6 @@ def _switch_parse( arg ):
             # It's not a switch
             return False
 
-        # d
-        if
     if arg[
             :len(
                 SWITCH_TYPES[ "short" ]
