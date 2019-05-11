@@ -67,10 +67,14 @@ A Python3 package manager for RHEL variaties
 	* -S,	Sync
 		* -g,	package group
 		* -r,	reinstall
+		* -f,	force
 	* -U,	Update
 		* -g,	package group
+		* -f,	force
 	* -Q,	Query
 		* -g,	package group
 	* -R,	Remove
 		* -g,	package group
+		* -p,	purge
+		* -f,	force
 		
