@@ -117,13 +117,12 @@ Optional lowercase sub switches
 		acceptable time formats.
 	* -f,	force
 	* -g,	package group
-	* -l,	specify a local repositories path
 	* -r,	reinstall
 	* -t,	target a repository that is not added to repos.d.  The repository\
-		will be added to a partial repos.d, which specifies the select packages\
+		will be added to a partial.repos.d, which specifies the select packages\
 		installed, allowing for the package to be included in updates.  Only\
 		information on the select packages will be updated for the repos\
-		database
+		database.  This may be a locally hosted repository.
 	* -u,	update local db
 * -U,	Update
 	* -d,	downgrade.  Specify a date in which to downgrade all packages,\
