@@ -94,6 +94,7 @@ Optional lowercase sub switches
 	* -p,	purge
 	* -r,	delete local repository (also in -C, your choice mate)
 * -S,	Sync
+	* -d,	downgrade package to previos version
 	* -f,	force
 	* -g,	package group
 	* -r,	reinstall
