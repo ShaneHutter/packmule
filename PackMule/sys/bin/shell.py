@@ -1,16 +1,15 @@
 #!/usr/bin/env python3
 """
 PackMule
-    PackMule.sys.bin.curl
+    PackMule.sys.bin.shell
 
     Written By:
         Shane Hutter
 
     Description:
-        Functions and atrributes for running curl
+        Functions and attributes for running commands in shell
 
     License:
         GNU GPLv3
 """
 
-from .shell import shell_exec

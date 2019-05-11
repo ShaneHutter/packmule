@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 """
 PackMule
-    PackMule.sys.bin.curl
+    PackMule.sys.db.packmule
 
     Written By:
         Shane Hutter
 
     Description:
-        Functions and atrributes for running curl
+        Functions and attributes for using packmule databases
+        Uses SQLite3
 
     License:
         GNU GPLv3
 """
 
-from .shell import shell_exec

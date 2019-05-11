@@ -1,5 +1,15 @@
 #!/usr/bin/env python3
 """
-	Written By:
-		Shane Hutter
+PackMule
+    PackMule
+
+    Written By:
+        Shane Hutter
+
+    Description:
+        Functions and attributes for the mail PackMule package
+
+    License:
+        GNU GPLv3
 """
+

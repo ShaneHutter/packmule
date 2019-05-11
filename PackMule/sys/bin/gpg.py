@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
 PackMule
-    PackMule.sys.bin.curl
+    PackMule.sys.bin.gpg
 
     Written By:
         Shane Hutter
 
     Description:
-        Functions and atrributes for running curl
+        Functions and attributes for gpg
 
     License:
         GNU GPLv3

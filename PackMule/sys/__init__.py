@@ -1,5 +1,15 @@
 #!/usr/bin/env python3
 """
-	Written By:
-		Shane Hutter
+PackMule
+    PackMule.sys
+
+    Written By:
+        Shane Hutter
+
+    Description:
+        Functions and attributes for system based modules
+
+    License:
+        GNU GPLv3
 """
+

@@ -1,5 +1,15 @@
 #!/usr/bin/env python3
 """
-	Written By:
-		Shane Hutter
+PackMule
+    PackMule.sys.repo
+
+    Written By:
+        Shane Hutter
+
+    Description:
+        Functions and attributes for working with package repositories
+
+    License:
+        GNU GPLv3
 """
+

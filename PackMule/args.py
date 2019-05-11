@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 """
 PackMule
-    PackMule.sys.bin.curl
+    PackMule.args
 
     Written By:
         Shane Hutter
 
     Description:
-        Functions and atrributes for running curl
+        Argument parsing for packmule
 
     License:
         GNU GPLv3
 """
 
-from .shell import shell_exec
+from argparse   import ArgumentParser
