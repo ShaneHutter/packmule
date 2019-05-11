@@ -71,6 +71,8 @@ A Python3 package manager for RHEL variaties
 Capitals are in a mutually exclusive group, and required\
 Optional lowercase sub switches
 
+* -B,	Build an rpm package
+	* -r,	package root to build from (required)
 * -C,	Create/manage repository
 	* -a,	add a package to the repository
 	* -d,	delete a package (or package group / repo)
