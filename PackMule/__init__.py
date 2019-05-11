@@ -22,7 +22,9 @@ ZERO , ONE  = int( False ) , int( True )
 
 
 # Index dictionary
-INDEXES = {}
+INDEXES = {
+        "tb"    : 2 ,
+        }
 
 
 # Exit codes
@@ -38,7 +40,7 @@ __author__  = "Shane Hutter"
 __version__ = "0.0.0-1"
 __bin__     = "packmule"
 
-PROG_INFO   = {
+PROGRAM_INFO   = {
         "prog"          : __bin__                                       ,
         "description"   : """
         A Python3 based wrapper and package manager for RHEL based Linux

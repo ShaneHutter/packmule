@@ -135,8 +135,7 @@ Optional lowercase sub switches
 	* -u,	update local db
 * -V,	Version Information (Display packmule version, and other program information)
 	* with no arguments (Version information)
-	* -a,	display all information, mutually exclusive with every other\
-		version information switch.
+	* -a,	display all information for installed version
 	* -d,	description
 	* -w,	author (written by) details
 	* ect...

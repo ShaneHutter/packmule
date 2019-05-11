@@ -13,33 +13,32 @@ PackMule
         GNU GPLv3
 """
 
-__all__ = [ argparser , ]
 
-
+from .          import PROGRAM_INFO
 from argparse   import ArgumentParser
 
 # Declare variables and constants
 PRIMARY_SWITCHES    = {
-        "build"     : {
+        "build"         : {
             "title"         : "Build"                                   , 
             "description"   : """
             Build an RPM package.
             """                                                         ,
-            }
-        "create"    : {
+            }           ,
+        "create"        : {
             "title"         : "Create"                                  ,
             "description"   : """
             Create and manage a locally (remotely?) built package
             repository
             """                                                         ,
-            }
-        "database"    : {
-            "title"         : "Database"                                ,
+            }           ,
+        "databases"      : {
+            "title"         : "Databases"                               ,
             "description"   : """
             Clean and maintain the local databases
             """                                                         ,
-            }
-        "info"      : {
+            }           ,   
+        "info"          : {
             "title"         : "Information"                             ,
             "description"   : """
             Display package, package group, and repository information 
@@ -47,14 +46,14 @@ PRIMARY_SWITCHES    = {
             or setup locally on the system
             """                                                         ,
             }           ,
-        "query"     : {
+        "query"         : {
             "title"         : "Query"                                   ,
             "description"   : """
             Query package, package group, and repository information
             from a remote package repository
             """                                                         ,
             }           ,
-        "remove"    : {
+        "remove"        : {
             "title"         : "Remove"                                  ,
             "description"   : """
             Remove packages and package groups from the local system.
@@ -62,20 +61,20 @@ PRIMARY_SWITCHES    = {
             system.
             """                                                         ,
             }           ,
-        "sync"      : {
+        "sync"          : {
             "title"         : "Sync"                                    ,
             "description"   : """
             Syncronize and packages from a repository
             """                                                         ,
             }           ,
-        "update"    : {
+        "update"        : {
             "title"         : "Update"                                  ,
             "description"   : """
             Update and upgrade local repository database and packages
             from remote repositories.
             """                                                         ,
             }           ,
-        "version"    : {
+        "version"       : {
             "title"         : "Version"                                 ,
             "description"   : """
             Display PackMule version, and other details
@@ -93,21 +92,19 @@ def argparser():
     '''
         If I can't use required in add_argument_group, then I
         may need to put the group inside a required mutually 
-        exclusive group with only primay swithes as it's member.
+        exclusive group with only primay switches as it's member.
     '''
-    primary_swicthes    = (
-            parser.add_argument_group( required = True )
-            )
+    primary_switches    = parser.add_argument_group()
     '''
         Can I add argument groups connected to each primary swith?
     '''
     build               = (
-            primary_swithes.add_argument_group(
+            primary_switches.add_argument_group(
                 PRIMARY_SWITCHES[ "build" ]
                 )
             )
     create              = (
-            primary_swithes.add_argument_group(
+            primary_switches.add_argument_group(
                 PRIMARY_SWITCHES[ "create" ]
                 )
             )
@@ -115,52 +112,45 @@ def argparser():
             create.add_mutually_exclusive_group()
             )
     databases           = (
-            primary_swithes.add_argument_group(
+            primary_switches.add_argument_group(
                 PRIMARY_SWITCHES[ "databases" ]
                 )
             )
     info                = (
-            primary_swithes.add_argument_group(
+            primary_switches.add_argument_group(
                 PRIMARY_SWITCHES[ "info" ]
                 )
             )
     query               = (
-            primary_swithes.add_argument_group(
+            primary_switches.add_argument_group(
                 PRIMARY_SWITCHES[ "query" ]
                 )
             )
     remove              = (
-            primary_swithes.add_argument_group(
+            primary_switches.add_argument_group(
                 PRIMARY_SWITCHES[ "remove" ]
                 )
             )
     sync                = (
-            primary_swithes.add_argument_group(
+            primary_switches.add_argument_group(
                 PRIMARY_SWITCHES[ "sync" ]
                 )
             )
     update              = (
-            primary_swithes.add_argument_group(
+            primary_switches.add_argument_group(
                 PRIMARY_SWITCHES[ "update" ]
                 )
             )
     version             = (
-            primary_swithes.add_argument_group(
+            primary_switches.add_argument_group(
                 PRIMARY_SWITCHES[ "version" ]
                 )
             )
-    # Mutually exclusive version all, and all other version switches
-    version_ao          = (
-            version.add_mutually_exclusive_group()
-            )
-    # All version switched, barring all, are in this group
-    version_o           = (
-            version_ao.add_agrument_group()
-            )
 
     '''
-        Will I run into conflicts with similair swithes?
-        Does creating groups avoid this?
+        To fix:
+            Argument groups will not allow for the same letters in other
+            groups.  Parsing may become more comlicated...
     '''
     # Build
     build.add_argument(
@@ -177,14 +167,15 @@ def argparser():
             "--pkg-root"                                                ,
             action      = "store_true"                                  ,
             required    = True                                          ,
-            '''
-                Make sure that this being required will not also make
-                -B a required argument!
-            '''
             help        = """
             Root directory of files to be packaged.  This is required.
             """                                                         ,
             )
+
+    '''
+        Make sure that this being required will not also make
+        -B a required argument!
+    '''
 
     # Create
     create.add_argument(
@@ -239,7 +230,7 @@ def argparser():
             "-g"                                                        ,
             "--pkg-group"                                               ,
              # List packages to operate upon
-            action      = "+"                                           , 
+            nargs       = "+"                                           , 
             help        = """
             Create or operate upon a package group in the repository.
             Additionally, add delete(-d) or upgrade (-u) to remove
@@ -378,14 +369,14 @@ def argparser():
             action  = "store_true"                                      ,
             help    = """
             List what package provides the specified file.  This can
-            be used along side other swithes, which seek information
+            be used along side other switches, which seek information
             on packages listed in the arguments.
             """                                                         ,
             )
     '''
     What provides (-w) is not mutually exclusive to any other swith
     provided with the primary swith.  If what provides is included
-    with other swithes, then file names will be ignored by other queued
+    with other switches, then file names will be ignored by other queued
     operations, but only if the file actuall exists in the filesystem;
     Otherwise, an exception will be raised.  If a file is passed without
     the what provides swith, an exception will be raised.
@@ -463,14 +454,14 @@ def argparser():
             action  = "store_true"                                      ,
             help    = """
             List what package provides the specified file.  This can
-            be used along side other swithes, which seek information
+            be used along side other switches, which seek information
             on packages listed in the arguments.
             """                                                         ,
             )
     '''
     What provides (-w) is not mutually exclusive to any other swith
     provided with the primary swith.  If what provides is included
-    with other swithes, then file names will be ignored by other queued
+    with other switches, then file names will be ignored by other queued
     operations, but only if the file actuall exists in the filesystem;
     Otherwise, an exception will be raised.  If a file is passed without
     the what provides swith, an exception will be raised.
@@ -688,7 +679,7 @@ def argparser():
             """                                                             ,
             )
 
-    version_ao.add_argument(
+    version.add_argument(
             "-a"                                                        ,
             "--all"                                                     ,
             action  = "store_true"                                      ,
@@ -698,7 +689,7 @@ def argparser():
             """                                                         ,
             )
 
-    version_o.add_argument(
+    version.add_argument(
             "-d"                                                        ,
             "--describe"                                                ,
             action      = "store_true"                                  ,
@@ -708,7 +699,7 @@ def argparser():
             """                                                         ,
             )
 
-    version_o.add_argument(
+    version.add_argument(
             "-w"                            ,
             "--written-by"                  ,
             action          = "store_true"  ,
@@ -718,3 +709,6 @@ def argparser():
             )
 
     return parser.parse_args()
+
+
+__all__ = [ argparser , ]
