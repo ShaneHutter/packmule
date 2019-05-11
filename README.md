@@ -20,6 +20,12 @@ A Python3 package manager for RHEL variaties
 	* x86_64
 	* ARM
 	* no i386
+* Repos
+	* Maintian yum compatibility
+	* Similar if not identical repository system
+		* Unique metadata?
+			* repo.pmmd (PackMule Meta-Data)
+	* Repository generating tools
 
 
 ## Dependancies
