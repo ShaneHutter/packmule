@@ -70,6 +70,12 @@ PRIMARY_SWITCHES    = {
             from remote repositories.
             """                                                         ,
             }           ,
+        "version"    : {
+            "title"         : "Version"                                 ,
+            "description"   : """
+            Display PackMule version, and other details
+            """                                                         ,
+            }
         }
 
 
@@ -84,20 +90,45 @@ def argparser():
     '''
         Can I add argument groups connected to each primary switch?
     '''
+    create              = (
+            primary_switches.add_argument_group(
+                PRIMARY_SWITCHES[ "create" ]
+                )
+            )
+    databases           = (
+            primary_switches.add_argument_group(
+                PRIMARY_SWITCHES[ "databases" ]
+                )
+            )
     info                = (
-            primary_switches.add_argument_group()
+            primary_switches.add_argument_group(
+                PRIMARY_SWITCHES[ "info" ]
+                )
             )
     query               = (
-            primary_switches.add_argument_group()
+            primary_switches.add_argument_group(
+                PRIMARY_SWITCHES[ "query" ]
+                )
             )
     remove              = (
-            primary_switches.add_argument_group()
+            primary_switches.add_argument_group(
+                PRIMARY_SWITCHES[ "remove" ]
+                )
             )
     sync                = (
-            primary_switches.add_argument_group()
+            primary_switches.add_argument_group(
+                PRIMARY_SWITCHES[ "sync" ]
+                )
             )
     update              = (
-            primary_switches.add_argument_group()
+            primary_switches.add_argument_group(
+                PRIMARY_SWITCHES[ "update" ]
+                )
+            )
+    version             = (
+            primary_switches.add_argument_group(
+                PRIMARY_SWITCHES[ "version" ]
+                )
             )
 
 
