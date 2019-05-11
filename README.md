@@ -65,5 +65,12 @@ A Python3 package manager for RHEL variaties
 ## Arguments and switching
 * Mutually exclusive group, and required
 	* -S,	Sync
+		* -g,	package group
+		* -r,	reinstall
 	* -U,	Update
+		* -g,	package group
 	* -Q,	Query
+		* -g,	package group
+	* -R,	Remove
+		* -g,	package group
+		
