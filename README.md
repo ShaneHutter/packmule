@@ -63,7 +63,8 @@ A Python3 package manager for RHEL variaties
 
 
 ## Arguments and switching
-* Mutually exclusive group, and required
+Capitlas are in a mutually exclusive group, and required
+Optional lowercase sub switches
 	* -S,	Sync
 		* -f,	force
 		* -g,	package group
