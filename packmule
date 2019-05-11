@@ -19,15 +19,31 @@ from PackMule        import (
 from PackMule.args  import argparser
 
 from sys            import exit
+from traceback      import print_tb
+
+
 
 def main( **argparser ):
     """
         Main code block
     """
-    return exit( status )
+    return exit(
+            STATUS[ "success" ]
+            )
+
+
 
 if __main__ == '__name__':
     """
         Start main
     """
-    status  = STATUS[ "clean" ]
+    try:
+        main(
+                argparser()
+                )
+    except Exception as error:
+        print_tp()
+        # log( error, log="fd2" )   # fd2 is a Stream log
+        exit(
+                STATUS[ "error" ]
+                )
