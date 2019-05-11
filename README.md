@@ -64,7 +64,7 @@ A Python3 package manager for RHEL variaties
 
 ## Arguments and switching
 
-Capitals are in a mutually exclusive group, and required
+Capitals are in a mutually exclusive group, and required\
 Optional lowercase sub switches
 
 * -S,	Sync
