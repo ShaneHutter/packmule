@@ -35,6 +35,7 @@ A Python3 package manager for RHEL variaties
 	* python >= 3.6 (preferably 3.7 to be honest)
 	* systemd >= 62 (RHEL core)
 	* curl	(RHEL core)
+	* coreutils (RHEL core, date)
 	* sqlite3 (RHEL core)
 	* gpgme (RHEL core)
 	* openssl (RHEL core)
@@ -93,12 +94,14 @@ Optional lowercase sub switches
 	* -l,	list installed.  This can be used with package group (-g) and repo (-r)
 	* -r,	repository information
 	* -u,	update local db
+	* -w,	what package provides a file
 * -Q,	Query	(remote)
 	* -d,	package details
 	* -g,	package group
 	* -l,	list installed. This can be used with package group (-g) and repo (-r)
 	* -r,	repository information
 	* -u,	update local db
+	* -w,	what package provides a file
 * -R,	Remove
 	* -c,	clean cache
 	* -f,	force

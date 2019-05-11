@@ -364,6 +364,25 @@ def argparser():
             """                                                     ,
             )
 
+    info.add_argument(
+            "-w"                                                        ,
+            "--what-provides"                                           ,
+            action  = "store_true"                                      ,
+            help    = """
+            List what package provides the specified file.  This can
+            be used along side other switches, which seek information
+            on packages listed in the arguments.
+            """                                                         ,
+            )
+    '''
+    What provides (-w) is not mutually exclusive to any other switch
+    provided with the primary switch.  If what provides is included
+    with other switches, then file names will be ignored by other queued
+    operations, but only if the file actuall exists in the filesystem;
+    Otherwise, an exception will be raised.  If a file is passed without
+    the what provides switch, an exception will be raised.
+    '''
+
     # Query
     query.add_argument(
             "-Q"                                                        ,
@@ -430,6 +449,25 @@ def argparser():
             """                                                     ,
             )
 
+    info.add_argument(
+            "-w"                                                        ,
+            "--what-provides"                                           ,
+            action  = "store_true"                                      ,
+            help    = """
+            List what package provides the specified file.  This can
+            be used along side other switches, which seek information
+            on packages listed in the arguments.
+            """                                                         ,
+            )
+    '''
+    What provides (-w) is not mutually exclusive to any other switch
+    provided with the primary switch.  If what provides is included
+    with other switches, then file names will be ignored by other queued
+    operations, but only if the file actuall exists in the filesystem;
+    Otherwise, an exception will be raised.  If a file is passed without
+    the what provides switch, an exception will be raised.
+    '''
+    
     # Remove
     remove.add_argument(
             "-R"                                                        ,
@@ -503,17 +541,17 @@ def argparser():
 
     # Sync
     sync.add_argument(
-            "-S"  ,
-            "--sync"  ,
-            nargs   = "+"  ,
+            "-S"                                    ,
+            "--sync"                                ,
+            nargs   = "+"                           ,
             help    = """
             Synchronize packages from a repository
-            """                     ,
+            """                                     ,
             )
 
     sync.add_argument(
-            ""  ,
-            ""  ,
+            "-d"                    ,
+            "--downgrade"           ,
             action  = "store_true"  ,
             help    = """
             """                     ,
@@ -536,6 +574,7 @@ def argparser():
             help    = """
             """                     ,
             )
+
     sync.add_argument(
             ""  ,
             ""  ,
@@ -562,6 +601,25 @@ def argparser():
             )
 
     # Update
+    update.add_argument(
+            "-U"  ,
+            ""  ,
+            nargs   = "*"  ,
+            help    = """
+            """                     ,
+            )
+    update.add_argument(
+            "-d"                                                        ,
+            "--downgrade"                                               ,
+            action  = "store_true"                                      ,
+            help    = """
+            Downgrade either all or any specified packages to a supplied
+            date.  Several date formats will be accepted, include epocal
+            timestamps.
+            """                                                         ,
+            )
+
+
     update.add_argument(
             "-f"                                                        ,
             "--force"                                                   ,
