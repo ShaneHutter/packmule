@@ -22,3 +22,5 @@ A Python3 package manager for RHEL variaties
 	* Repos
 		* ``/etc/packmule/repos.d/``
 		* ``/etc/yum.repos.d/``
+	* DBs
+		* ``/var/lib/packmule/db``
