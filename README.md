@@ -113,7 +113,8 @@ Optional lowercase sub switches
 	* -d,	downgrade package to previous version either by passing the version\
 		number, or by providing a date (using multiple date formats) to\
 		determine the package version which the given package will be\
-		downgraded to.
+		downgraded to.  A Unix epocal time stamp will be included in the\
+		acceptable time formats.
 	* -f,	force
 	* -g,	package group
 	* -l,	specify a local repositories path
