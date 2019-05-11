@@ -64,30 +64,30 @@ A Python3 package manager for RHEL variaties
 
 ## Arguments and switching
 
-* Capitals are in a mutually exclusive group, and required
-* Optional lowercase sub switches
+Capitals are in a mutually exclusive group, and required
+Optional lowercase sub switches
 
-	* -S,	Sync
-		* -f,	force
-		* -g,	package group
-		* -r,	reinstall
-		* -u,	update local db
-	* -U,	Update
-		* -f,	force
-		* -g,	package group
-		* -u,	update local db
-	* -Q,	Query	(remote)
-		* -d,	package details
-		* -g,	package group
-		* -l,	list installed
-		* -u,	update local db
-	* -I,	Info	(local)
-		* -d,	package details
-		* -g,	package group
-		* -l,	list installed
-		* -u,	update local db
-	* -R,	Remove
-		* -f,	force
-		* -g,	package group
-		* -p,	purge
-		
+* -S,	Sync
+	* -f,	force
+	* -g,	package group
+	* -r,	reinstall
+	* -u,	update local db
+* -U,	Update
+	* -f,	force
+	* -g,	package group
+	* -u,	update local db
+* -Q,	Query	(remote)
+	* -d,	package details
+	* -g,	package group
+	* -l,	list installed
+	* -u,	update local db
+* -I,	Info	(local)
+	* -d,	package details
+	* -g,	package group
+	* -l,	list installed
+	* -u,	update local db
+* -R,	Remove
+	* -f,	force
+	* -g,	package group
+	* -p,	purge
+	
