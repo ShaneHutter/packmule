@@ -94,6 +94,7 @@ Optional lowercase sub switches
 	* -c,	clean cache
 	* -f,	force
 	* -g,	package group
+	* -l,	remove lockfile, if last run exited poorly.  This will kill any running packmule process!
 	* -p,	purge
 	* -r,	delete local repository (also in -C, your choice mate)
 * -S,	Sync
@@ -105,6 +106,7 @@ Optional lowercase sub switches
 * -U,	Update
 	* -f,	force
 	* -g,	package group
+	* -r,	reinstall all installed packages (emerge -DuNe much?)
 	* -u,	update local db
 * -V,	Version (Display packmule version, and other program information)
 	* with no arguments (Version information)
