@@ -14,8 +14,10 @@ A Python3 package manager for RHEL variaties
 		* alerts and confirmation ( all or package specific )
 		* exclude packages
 * Ensure compatibility with Cloudlinux alt-python
+* Import settings from yum configurations
 
-# Dependancies
+
+## Dependancies
 * python >= 3.6 (preferably 3.7 to be honest)
 * systemd >= 62 (RHEL core)
 * curl	(RHEL core)
@@ -25,7 +27,7 @@ A Python3 package manager for RHEL variaties
 	* RHEL >= 7.6
 	* Fedora >= 30
 
-# File structure
+## File structure
 * Cache
 	* ``/var/cache/packmule``
 * Config
