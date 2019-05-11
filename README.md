@@ -73,10 +73,10 @@ Capitals are the primary switches and at least one is required.\
 Primary switches can be combined (possible?), which will cause\
 tasks to queue up, and be performed in.\
 the most ideal order.\
-Optional lowercase sub switches
+Optional lowercase sub switches \
+Note:  argparse is not suitable for this, a parser must be built.
 
-* -B,	Build an rpm package
-	* -r,	package root to build from (required)
+* -B,	Build an rpm package (pass package root directories)
 * -C,	Create/manage repository
 	* -a,	add a package to the repository
 	* -d,	delete a package (or package group / repo)
