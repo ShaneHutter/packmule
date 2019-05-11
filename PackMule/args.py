@@ -149,6 +149,14 @@ def argparser():
                 PRIMARY_SWITCHES[ "version" ]
                 )
             )
+    # Mutually exclusive version all, and all other version switches
+    version_ao          = (
+            version.add_mutually_exclusive_group()
+            )
+    # All version switched, barring all, are in this group
+    version_o           = (
+            version_ao.add_agrument_group()
+            )
 
     '''
         Will I run into conflicts with similair swithes?
@@ -607,73 +615,106 @@ def argparser():
 
     # Update
     update.add_argument(
-            "-U"  ,
-            ""  ,
-            nargs   = "*"  ,
-            help    = """
-            """                     ,
+            "-U"                                        ,
+            "--update"                                  ,
+            nargs       = "*"                           ,
+            help        = """
+            Update packages, and repository databases.
+            """                                         ,
             )
+
     update.add_argument(
             "-d"                                                        ,
             "--downgrade"                                               ,
-            action  = "store_true"                                      ,
-            help    = """
+            action          = "store_true"                              ,
+            help            = """
             Downgrade either all or any specified packages to a supplied
             date.  Several date formats will be accepted, include epocal
             timestamps.
             """                                                         ,
             )
 
-
     update.add_argument(
             "-f"                                                        ,
             "--force"                                                   ,
-            action  = "store_true"                                      ,
-            help    = """
+            action      = "store_true"                                  ,
+            help        = """
             Force an operation.  I'm not 100% on what this will entail
             with each primary swith.
             """                                                         ,
             )
 
     update.add_argument(
-            ""  ,
-            ""  ,
-            action  = "store_true"  ,
-            help    = """
-            """                     ,
+            "-g"                                                            ,
+            "--pkg-group"                                                   ,
+            nargs           = "+"                                           ,
+            help            = """
+            Upgrade the provided package groups. If no additional
+            packages are provided to upgrade, then only the packages from
+            the provided package groups will be upgraded.
+            """                                                             ,
             )
 
     update.add_argument(
-            ""  ,
-            ""  ,
-            action  = "store_true"  ,
-            help    = """
-            """                     ,
+            "-r"                                                            ,
+            "--reinstall-pkgs"                                              ,
+            action              = "store_true"                              ,
+            help                = """
+            Either reinstall all packages, or the packages provided. This
+            can be combined with package group (-g), to reinstall both the
+            provided groups, and any listed packages.
+            """                                                             ,
             )
 
     update.add_argument(
-            ""  ,
-            ""  ,
-            action  = "store_true"  ,
-            help    = """
-            """                     ,
+            "-u"                                ,
+            "--update"                          ,
+            action      = "store_true"          ,
+            help        = """
+            Update repository package databases.
+            """                                 ,
             )
 
     # Version
     version.add_argument(
-            ""  ,
-            ""  ,
-            action  = "store_true"  ,
-            help    = """
-            """                     ,
+            "-V"                                                            ,
+            "--version-info"                                                ,
+            action          = "store_true"                                  ,
+            help            = """
+            Display version information, or other details on the current
+            installed version of PackMule.  If no additional switches are
+            provided, then only the version number is displayed.  This
+            operation will queue at the end of all other operations.
+            """                                                             ,
             )
 
-    version.add_argument(
-            ""  ,
-            ""  ,
-            action  = "store_true"  ,
+    version_ao.add_argument(
+            "-a"                                                        ,
+            "--all"                                                     ,
+            action  = "store_true"                                      ,
             help    = """
-            """                     ,
+            Display all information for the currently installed version
+            of PackMule.
+            """                                                         ,
+            )
+
+    version_o.add_argument(
+            "-d"                                                        ,
+            "--describe"                                                ,
+            action      = "store_true"                                  ,
+            help        = """
+            Display a description of the currently installed version of
+            PackMule.
+            """                                                         ,
+            )
+
+    version_o.add_argument(
+            "-w"                            ,
+            "--written-by"                  ,
+            action          = "store_true"  ,
+            help            = """
+            Display PackMule's authors.
+            """                             ,
             )
 
     return parser.parse_args()

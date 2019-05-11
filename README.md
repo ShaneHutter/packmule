@@ -133,10 +133,12 @@ Optional lowercase sub switches
 	* -g,	package group
 	* -r,	reinstall all installed packages (emerge -DuNe @world much?)
 	* -u,	update local db
-* -V,	Version (Display packmule version, and other program information)
+* -V,	Version Information (Display packmule version, and other program information)
 	* with no arguments (Version information)
-	* -a,	author details
+	* -a,	display all information, mutually exclusive with every other\
+		version information switch.
 	* -d,	description
+	* -w,	author (writter) details
 	* ect...
 
 ## Additional Notes:
