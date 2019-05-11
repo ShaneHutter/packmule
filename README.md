@@ -1,4 +1,4 @@
-# Packmule
+# PackMule
 A Python3 package manager for RHEL variaties
 
 ## Concepts
@@ -90,3 +90,6 @@ Optional lowercase sub switches
 	* -f,	force
 	* -g,	package group
 	* -u,	update local db
+
+## Additional Notes:
+* I'm not sure if my coding style with Python is fully PEP8; however, I am to conform to the standard, providing that a requirement doesn't bug the crap out of me.
