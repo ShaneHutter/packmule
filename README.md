@@ -106,6 +106,11 @@ Optional lowercase sub switches
 	* -f,	force
 	* -g,	package group
 	* -u,	update local db
+* -V,	Version (Display packmule version, and other program information)
+	* with no arguments (Version information)
+	* -a,	author details
+	* -d,	description
+	* ect...
 
 ## Additional Notes:
 * I'm not sure if my coding style with Python is fully PEP8; however, I am to conform to the standard, providing that a requirement doesn't bug the crap out of me.
