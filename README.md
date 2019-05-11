@@ -13,6 +13,7 @@ A Python3 package manager for RHEL variaties
 		* just db
 		* alerts and confirmation ( all or package specific )
 		* exclude packages
+* Ensure compatibility with Cloudlinux alt-python
 
 # Dependancies
 * python >= 3.6 (preferably 3.7 to be honest)
