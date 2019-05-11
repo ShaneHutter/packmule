@@ -158,16 +158,16 @@ SECONDARY_SWITCHES  = {
                 """                                                     ,
                 }   ,
             "g" : {    ,
-                "value"     : bool()        ,
-                "conflicts" : ( "r" , )     ,
-                "name"      : "pkg group"   ,
+                "value"     : bool()                                    ,
+                "conflicts" : ( "r" , )                                 ,
+                "name"      : "pkg group"                               ,
                 "help"      : """
                 Create or operate upon a package group in the repository.
                 Additionally, add delete(-d) or upgrade (-u) to remove
                 or upgrade the packages in the package group.
-                """                         ,
-                }    ,
-            "r" : {    ,
+                """                                                     ,
+                }   ,
+            "r" : {    
                 "value"     : bool()                                    ,
                 "conflicts" : ( "g" , )                                 ,
                 "name"      : "repo"                                    ,
@@ -176,250 +176,278 @@ SECONDARY_SWITCHES  = {
                 repository, from the local system.  Create will manage 
                 the given repository if this is not specified.
                 """                                                     ,
-                }    ,
-            "u" : {    ,
-                "value"     : bool()    ,
-                "conflicts" : None      ,
-                "name"      : "" ,
+                }   ,
+            "u" : {  
+                "value"     : bool()                                    ,
+                "conflicts" : None                                      ,
+                "name"      : "upgrade"                                 ,
                 "help"      : """
-                """                     ,
-                }    ,
+                Upgrade a package in a repostory, or group (-g) on the
+                local system.
+                """                                                     ,
+                }   ,
             }                           ,
         PRIMARY_SWITCHES[ "D" ] : {
-            "c" : {    ,
-                "value"     : bool()    ,
-                "conflicts" : None      ,
-                "name"      : "" ,
+            "c" : {
+                "value"     : bool()            ,
+                "conflicts" : None              ,
+                "name"      : "clean"           ,
                 "help"      : """
-                """                     ,
+                Clean local database metadata.  
+                """                             ,
                 }    ,
-            "e" : {    ,
-                "value"     : bool()    ,
-                "conflicts" : None      ,
-                "name"      : "" ,
+            "e" : {
+                "value"     : bool()        ,
+                "conflicts" : None          ,
+                "name"      : "empty"       ,
                 "help"      : """
-                """                     ,
-                }    ,
-            "f" : {    ,
-                "value"     : bool()    ,
-                "conflicts" : None      ,
-                "name"      : "" ,
+                Empty the PackMule cache.
+                """                         ,
+                }   ,
+            "f" : {
+                "value"     : bool()                                ,
+                "conflicts" : None                                  ,
+                "name"      : "force"                               ,
                 "help"      : """
-                """                     ,
-                }    ,
+                Force an operation.  I'm not 100% on what this will
+                entail with each primary switch.
+                """                                                 ,
+                }   ,
             }                           ,
         PRIMARY_SWITCHES[ "I" ] : {
-            "d" : {    ,
+            "d" : {   
                 "value"     : bool()    ,
                 "conflicts" : None      ,
-                "name"      : "" ,
+                "name"      : "details" ,
                 "help"      : """
+                Display package details.
                 """                     ,
-                }    ,
-            "g" : {    ,
-                "value"     : bool()    ,
-                "conflicts" : None      ,
-                "name"      : "" ,
+                }   ,
+            "g" : {
+                "value"     : bool()            ,
+                "conflicts" : None              ,
+                "name"      : "pkg group"       , 
                 "help"      : """
-                """                     ,
+                Display package group details.
+                """                             ,
                 }    ,
-            "l" : {    ,
-                "value"     : bool()    ,
-                "conflicts" : None      ,
-                "name"      : "" ,
+            "l" : {
+                "value"     : bool()                                    ,
+                "conflicts" : None                                      ,
+                "name"      : "list installed"                          ,
                 "help"      : """
-                """                     ,
-                }    ,
-            "r" : {    ,
-                "value"     : bool()    ,
-                "conflicts" : None      ,
-                "name"      : "" ,
+                List the files installed from teh provided package.  
+                This can also be used with package group (-g) and 
+                repo (-r).
+                """                                                     ,
+                }   ,
+            "r" : {
+                "value"     : bool()                        ,
+                "conflicts" : None                          ,
+                "name"      : "repo"                        ,
                 "help"      : """
-                """                     ,
-                }    ,
-            "u" : {    ,
-                "value"     : bool()    ,
-                "conflicts" : None      ,
-                "name"      : "" ,
+                Display locally hosted repository details.
+                """                                         ,
+                }   ,
+            "u" : {
+                "value"     : bool()                                    ,
+                "conflicts" : None                                      ,
+                "name"      : "update"                                  ,
                 "help"      : """
-                """                     ,
-                }    ,
-            "w" : {    ,
-                "value"     : bool()    ,
-                "conflicts" : None      ,
-                "name"      : "" ,
+                Update local repository databases prior to checking the
+                details of any provided argument.
+                """                                                     ,
+                }   ,
+            "w" : {
+                "value"     : bool()                                    ,
+                "conflicts" : None                                      ,
+                "name"      : "what provides"                           ,
                 "help"      : """
-                """                     ,
-                }    ,
+                List what package provides the specified file.  This can
+                be used along side other switches, which seek information
+                on packages listed in the arguments
+                """                                                     ,
+                }   ,
             }                           ,
         PRIMARY_SWITCHES[ "Q" ] : {
-            "d" : {    ,
+            "d" : {   
                 "value"     : bool()    ,
                 "conflicts" : None      ,
-                "name"      : "" ,
+                "name"      : "details" ,
                 "help"      : """
+                Display package details.
                 """                     ,
+                }   ,
+            "g" : {
+                "value"     : bool()            ,
+                "conflicts" : None              ,
+                "name"      : "pkg group"       , 
+                "help"      : """
+                Display package group details.
+                """                             ,
                 }    ,
-            "g" : {    ,
-                "value"     : bool()    ,
-                "conflicts" : None      ,
-                "name"      : "" ,
+            "l" : {
+                "value"     : bool()                                    ,
+                "conflicts" : None                                      ,
+                "name"      : "list installed"                          ,
                 "help"      : """
-                """                     ,
-                }    ,
-            "l" : {    ,
-                "value"     : bool()    ,
-                "conflicts" : None      ,
-                "name"      : "" ,
+                List the files installed from teh provided package.  
+                This can also be used with package group (-g) and 
+                repo (-r).
+                """                                                     ,
+                }   ,
+            "r" : {
+                "value"     : bool()                        ,
+                "conflicts" : None                          ,
+                "name"      : "repo"                        ,
                 "help"      : """
-                """                     ,
-                }    ,
-            "r" : {    ,
-                "value"     : bool()    ,
-                "conflicts" : None      ,
-                "name"      : "" ,
+                Display remotely hosted repository details.
+                """                                         ,
+                }   ,
+            "u" : {
+                "value"     : bool()                                    ,
+                "conflicts" : None                                      ,
+                "name"      : "update"                                  ,
                 "help"      : """
-                """                     ,
-                }    ,
-            "u" : {    ,
-                "value"     : bool()    ,
-                "conflicts" : None      ,
-                "name"      : "" ,
+                Update remote repository databases prior to checking the
+                details of any provided argument.
+                """                                                     ,
+                }   ,
+            "w" : {
+                "value"     : bool()                                    ,
+                "conflicts" : None                                      ,
+                "name"      : "what provides"                           ,
                 "help"      : """
-                """                     ,
-                }    ,
-            "w" : {    ,
-                "value"     : bool()    ,
-                "conflicts" : None      ,
-                "name"      : "" ,
-                "help"      : """
-                """                     ,
+                List what package provides the specified file.  This can
+                be used along side other switches, which seek information
+                on packages listed in the arguments
+                """                                                     ,
                 }    ,
             }                           ,
         PRIMARY_SWITCHES[ "R" ] : {
-            "c" : {    ,
+            "c" : {
                 "value"     : bool()    ,
                 "conflicts" : None      ,
                 "name"      : "" ,
                 "help"      : """
                 """                     ,
-                }    ,
-            "f" : {    ,
+                }   ,
+            "f" : {
                 "value"     : bool()    ,
                 "conflicts" : None      ,
                 "name"      : "" ,
                 "help"      : """
                 """                     ,
-                }    ,
-            "g" : {    ,
+                }   ,
+            "g" : {
                 "value"     : bool()    ,
                 "conflicts" : None      ,
                 "name"      : "" ,
                 "help"      : """
                 """                     ,
-                }    ,
-            "l" : {    ,
+                }   ,
+            "l" : {
                 "value"     : bool()    ,
                 "conflicts" : None      ,
                 "name"      : "" ,
                 "help"      : """
                 """                     ,
-                }    ,
-            "p" : {    ,
+                }   ,
+            "p" : {
                 "value"     : bool()    ,
                 "conflicts" : None      ,
                 "name"      : "" ,
                 "help"      : """
                 """                     ,
-                }    ,
-            "r" : {    ,
+                }   ,
+            "r" : {
                 "value"     : bool()    ,
                 "conflicts" : None      ,
                 "name"      : "" ,
                 "help"      : """
                 """                     ,
-                }    ,
+                }   ,
             }                           ,
         PRIMARY_SWITCHES[ "S" ] : {
-            "" : {    ,
+            "" : {
                 "value"     : bool()    ,
                 "conflicts" : None      ,
                 "name"      : "" ,
                 "help"      : """
                 """                     ,
-                }    ,
-            "" : {    ,
+                }   ,
+            "" : {
                 "value"     : bool()    ,
                 "conflicts" : None      ,
                 "name"      : "" ,
                 "help"      : """
                 """                     ,
-                }    ,
-            "" : {    ,
+                }   ,
+            "" : {
                 "value"     : bool()    ,
                 "conflicts" : None      ,
                 "name"      : "" ,
                 "help"      : """
                 """                     ,
-                }    ,
-            "" : {    ,
+                }   ,
+            "" : {
                 "value"     : bool()    ,
                 "conflicts" : None      ,
                 "name"      : "" ,
                 "help"      : """
                 """                     ,
-                }    ,
-            "" : {    ,
+                }   ,
+            "" : {
                 "value"     : bool()    ,
                 "conflicts" : None      ,
                 "name"      : "" ,
                 "help"      : """
                 """                     ,
-                }    ,
-            "" : {    ,
+                }   ,
+            "" : { 
                 "value"     : bool()    ,
                 "conflicts" : None      ,
                 "name"      : "" ,
                 "help"      : """
                 """                     ,
-                }    ,
+                }   ,
             }                           ,
         PRIMARY_SWITCHES[ "U" ] : {
-            "" : {    ,
+            "" : {
                 "value"     : bool()    ,
                 "conflicts" : None      ,
                 "name"      : "" ,
                 "help"      : """
                 """                     ,
-                }    ,
-            "" : {    ,
+                }   ,
+            "" : {
                 "value"     : bool()    ,
                 "conflicts" : None      ,
                 "name"      : "" ,
                 "help"      : """
                 """                     ,
-                }    ,
-            "" : {    ,
+                }   ,
+            "" : {
                 "value"     : bool()    ,
                 "conflicts" : None      ,
                 "name"      : "" ,
                 "help"      : """
                 """                     ,
-                }    ,
-            "" : {    ,
+                }   ,
+            "" : {
                 "value"     : bool()    ,
                 "conflicts" : None      ,
                 "name"      : "" ,
                 "help"      : """
                 """                     ,
-                }    ,
-            "" : {    ,
+                }   ,
+            "" : {
                 "value"     : bool()    ,
                 "conflicts" : None      ,
                 "name"      : "" ,
                 "help"      : """
                 """                     ,
-                }    ,
+                }   ,
             }                           ,
         PRIMARY_SWITCHES[ "V" ] : {
             "" : {
@@ -476,9 +504,6 @@ def _switch_parse( arg ):
 
         # d
         if
-
-
-
     if arg[
             :len(
                 SWITCH_TYPES[ "short" ]
