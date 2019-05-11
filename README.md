@@ -110,7 +110,10 @@ Optional lowercase sub switches
 	* -p,	purge
 	* -r,	delete local repository (also in -C, your choice mate)
 * -S,	Sync
-	* -d,	downgrade package to previos version
+	* -d,	downgrade package to previos version either by passing the version\
+		number, or by providing a date (using multiple date formats) to\
+		determine the package version which the given package will be\
+		downgraded to.
 	* -f,	force
 	* -g,	package group
 	* -l,	specify a local repositories path
