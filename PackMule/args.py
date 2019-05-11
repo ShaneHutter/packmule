@@ -470,7 +470,7 @@ def argparser():
             )
 
     remove.add_argument(
-            "l"                                                         ,
+            "-l"                                                        ,
             "--lock"                                                    ,
             action  = "store_true"                                      ,
             help    = """
