@@ -13,10 +13,14 @@ PackMule
         GNU GPLv3
 """
 
+__all__ = [ argparser , ]
+
 from argparse   import ArgumentParser
 
 def argparser():
     """
         Command line arguments for PackMule
     """
+    parser  = ArgumentParser( **PROGRAM_INFO )
 
+    return parser.parse_args()

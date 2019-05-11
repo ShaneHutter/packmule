@@ -30,3 +30,18 @@ STATUS  = {
         "success"   : ZERO  ,
         "error"     : -ONE  ,
         }
+
+
+# Program Information
+
+__author__  = "Shane Hutter"
+__version__ = "0.0.0-1"
+__bin__     = "packmule"
+
+PROG_INFO   = {
+        "prog"          : __bin__                                       ,
+        "description"   : """
+        A Python3 based wrapper and package manager for RHEL based Linux
+        distributions.
+        """                                                             ,
+        }
