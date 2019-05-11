@@ -442,37 +442,43 @@ def argparser():
             )
 
     remove.add_argument(
-            ""  ,
-            ""  ,
-            action  = "store_true"  ,
-            help    = """
-            """                     ,
+            "-c"                                ,
+            "--clean"                           ,
+            action      = "store_true"          ,
+            help        = """
+            Clean up PackMule's package cache
+            """                                 ,
             )
 
     remove.add_argument(
             "-f"                                                        ,
             "--force"                                                   ,
-            action  = "store_true"                                      ,
-            help    = """
+            action      = "store_true"                                  ,
+            help        = """
             Force an operation.  I'm not 100% on what this will entail
             witch each primary switch.
             """                                                         ,
             )
 
     remove.add_argument(
-            ""  ,
-            ""  ,
-            action  = "store_true"  ,
-            help    = """
-            """                     ,
+            "-g"                                            ,
+            "--pkg-group"                                   ,
+            action          = "store_true"                  ,
+            help            = """
+            Remove a package group from the local system.
+            """                                             ,
             )
 
     remove.add_argument(
-            ""  ,
-            ""  ,
-            action  = "store_true"  ,
+            "l"                                                         ,
+            "--lock"                                                    ,
+            action  = "store_true"                                      ,
             help    = """
-            """                     ,
+            Remove the lock file for PackMule.  Use this if PackMule
+            exited in an uncontrolled manner, which may leave the lock
+            file in place.  Running this command will also attempt to
+            terminate any running PackMule process.
+            """                                                         ,
             )
 
     remove.add_argument(
