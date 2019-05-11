@@ -19,6 +19,10 @@ A Python3 package manager for RHEL variaties
 * systemd >= 62
 * curl
 * sqlite3
+* Distro
+	* CentOS >= 7.6
+	* RHEL >= 7.6
+	* Fedora >= 30
 
 # File structure
 * Cache
