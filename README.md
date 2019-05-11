@@ -85,6 +85,8 @@ Optional lowercase sub switches
 	* -u,	upgrade a package in a local repository
 * -D,	Databases
 	* -c,	clean local database metadata
+	* -e,	empty PackMule cache
+	* -f,	force
 * -I,	Info	(local)
 	* -d,	package details
 	* -g,	package group

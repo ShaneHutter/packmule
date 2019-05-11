@@ -261,13 +261,31 @@ def argparser():
 
     # Databases
     databases.add_argument(
-            ""  ,
-            ""  ,
+            "-D"  ,
+            "--databases"  ,
             action  = "store_true"  ,
             help    = """
             """                     ,
             )
             
+    databases.add_argument(
+            "-c"                            ,
+            "--clean"                       ,
+            action  = "store_true"          ,
+            help    = """
+            Clean local database metadata.
+            """                             ,
+            )
+            
+    databases.add_argument(
+            "-e"                    ,
+            "--empty"               ,
+            action  = "store_true"  ,
+            help    = """
+            Empty the PackMule cache.
+            """                     ,
+            )
+
     databases.add_argument(
             "-f"                                                        ,
             "--force"                                                   ,
