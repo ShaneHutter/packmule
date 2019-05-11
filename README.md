@@ -11,6 +11,7 @@ A Python3 package manager for RHEL variaties
 # Dependancies
 * python >= 3.6 (preferably 3.7 to be honest)
 * curl
+* sqlite3
 
 # File structure
 * Cache
