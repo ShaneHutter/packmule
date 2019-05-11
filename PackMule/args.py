@@ -298,87 +298,147 @@ def argparser():
 
     # Info
     info.add_argument(
-            ""  ,
-            ""  ,
-            action  = "store_true"  ,
+            "-I"                                                    ,
+            "--info"                                                ,
+            nargs   = "+"                                           ,
             help    = """
-            """                     ,
+            Display information from  locally installed packages or
+            package groups.  Also, display information for locally
+            hosted repositories.
+            """                                                     ,
             )
 
     info.add_argument(
-            ""  ,
-            ""  ,
+            "-d"                    ,
+            "--details"             ,
             action  = "store_true"  ,
             help    = """
+            Display package details.
             """                     ,
+            )
+    '''
+    Details, package group, and repo are not mutually exclusive. 
+    Packages, package groups, and repositories cannot have the same name 
+    (check yum compatibility).  The listed arguments will queue
+    (package, package group, repo) and will list details of each provided
+    argument that was passed into info.
+    '''
+
+    info.add_argument(
+            "-g"                            ,
+            "--pkg-group"                   ,
+            action  = "store_true"          ,
+            help    = """
+            Display package group details.
+            """                             ,
             )
 
     info.add_argument(
-            ""  ,
-            ""  ,
-            action  = "store_true"  ,
+            "-l"                                                        ,
+            "--list-installed"                                          ,
+            action  = "store_true"                                      ,
             help    = """
-            """                     ,
+            List the files installed from teh provided package.  This
+            can also be used with package group (-g) and repo (-r).
+            """                                                         ,
             )
 
     info.add_argument(
-            ""  ,
-            ""  ,
-            action  = "store_true"  ,
+            "-r"                                        ,
+            "--repo"                                    ,
+            action  = "store_true"                      ,
             help    = """
-            """                     ,
+            Display locally hosted repository details.
+            """                                         ,
             )
 
     info.add_argument(
-            ""  ,
-            ""  ,
-            action  = "store_true"  ,
+            "-u"                                                    ,
+            "--update"                                              ,
+            action  = "store_true"                                  ,
             help    = """
-            """                     ,
+            Update local repository databases prior to checking the
+            details of any provided argument.
+            """                                                     ,
             )
 
     # Query
     query.add_argument(
-            ""  ,
-            ""  ,
-            action  = "store_true"  ,
+            "-Q"                                                        ,
+            "--query"                                                   ,
+            nargs  = "+"                                                ,
             help    = """
-            """                     ,
+            Query remote details from packages and package groups in a
+            remotely hosted repository.  Also, query information for
+            remotely hosted repositories.
+            """                                                         ,
             )
 
     query.add_argument(
-            ""  ,
-            ""  ,
+            "-d"                    ,
+            "--details"             ,
             action  = "store_true"  ,
             help    = """
+            Display package details.
             """                     ,
+            )
+    '''
+    Details, package group, and repo are not mutually exclusive. 
+    Packages, package groups, and repositories cannot have the same name 
+    (check yum compatibility).  The listed arguments will queue
+    (package, package group, repo) and will list details of each provided
+    argument that was passed into info.
+    '''
+
+    query.add_argument(
+            "-g"                            ,
+            "--pkg-group"                   ,
+            action  = "store_true"          ,
+            help    = """
+            Display package group details.
+            """                             ,
             )
 
     query.add_argument(
-            ""  ,
-            ""  ,
-            action  = "store_true"  ,
+            "-l"                                                        ,
+            "--list-installed"                                          ,
+            action  = "store_true"                                      ,
             help    = """
-            """                     ,
+            List the files installed from teh provided package.  This
+            can also be used with package group (-g) and repo (-r).
+            """                                                         ,
             )
 
     query.add_argument(
-            ""  ,
-            ""  ,
-            action  = "store_true"  ,
+            "-r"                                        ,
+            "--repo"                                    ,
+            action  = "store_true"                      ,
             help    = """
-            """                     ,
+            Display locally hosted repository details.
+            """                                         ,
             )
 
     query.add_argument(
-            ""  ,
-            ""  ,
-            action  = "store_true"  ,
+            "-u"                                                    ,
+            "--update"                                              ,
+            action  = "store_true"                                  ,
             help    = """
-            """                     ,
+            Update local repository databases prior to checking the
+            details of any provided argument.
+            """                                                     ,
             )
 
     # Remove
+    remove.add_argument(
+            "-R"                                                        ,
+            "--remove"                                                  ,
+            action  = "store_true"                                      ,
+            help    = """
+            Remove a package or package group which has been installed
+            on the local system.
+            """                                                         ,
+            )
+
     remove.add_argument(
             ""  ,
             ""  ,

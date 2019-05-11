@@ -90,13 +90,13 @@ Optional lowercase sub switches
 * -I,	Info	(local)
 	* -d,	package details
 	* -g,	package group
-	* -l,	list installed
+	* -l,	list installed.  This can be used with package group (-g) and repo (-r)
 	* -r,	repository information
 	* -u,	update local db
 * -Q,	Query	(remote)
 	* -d,	package details
 	* -g,	package group
-	* -l,	list installed
+	* -l,	list installed. This can be used with package group (-g) and repo (-r)
 	* -r,	repository information
 	* -u,	update local db
 * -R,	Remove
