@@ -15,6 +15,7 @@ A Python3 package manager for RHEL variaties
 		* exclude packages
 * Ensure compatibility with Cloudlinux alt-python
 * Import settings from yum configurations
+	* A drop-in replacement for yum using Python3
 
 
 ## Dependancies
