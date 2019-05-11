@@ -93,21 +93,21 @@ def argparser():
     '''
         If I can't use required in add_argument_group, then I
         may need to put the group inside a required mutually 
-        exclusive group with only primay switches as it's member.
+        exclusive group with only primay swithes as it's member.
     '''
     primary_swicthes    = (
             parser.add_argument_group( required = True )
             )
     '''
-        Can I add argument groups connected to each primary switch?
+        Can I add argument groups connected to each primary swith?
     '''
     build               = (
-            primary_switches.add_argument_group(
+            primary_swithes.add_argument_group(
                 PRIMARY_SWITCHES[ "build" ]
                 )
             )
     create              = (
-            primary_switches.add_argument_group(
+            primary_swithes.add_argument_group(
                 PRIMARY_SWITCHES[ "create" ]
                 )
             )
@@ -115,43 +115,43 @@ def argparser():
             create.add_mutually_exclusive_group()
             )
     databases           = (
-            primary_switches.add_argument_group(
+            primary_swithes.add_argument_group(
                 PRIMARY_SWITCHES[ "databases" ]
                 )
             )
     info                = (
-            primary_switches.add_argument_group(
+            primary_swithes.add_argument_group(
                 PRIMARY_SWITCHES[ "info" ]
                 )
             )
     query               = (
-            primary_switches.add_argument_group(
+            primary_swithes.add_argument_group(
                 PRIMARY_SWITCHES[ "query" ]
                 )
             )
     remove              = (
-            primary_switches.add_argument_group(
+            primary_swithes.add_argument_group(
                 PRIMARY_SWITCHES[ "remove" ]
                 )
             )
     sync                = (
-            primary_switches.add_argument_group(
+            primary_swithes.add_argument_group(
                 PRIMARY_SWITCHES[ "sync" ]
                 )
             )
     update              = (
-            primary_switches.add_argument_group(
+            primary_swithes.add_argument_group(
                 PRIMARY_SWITCHES[ "update" ]
                 )
             )
     version             = (
-            primary_switches.add_argument_group(
+            primary_swithes.add_argument_group(
                 PRIMARY_SWITCHES[ "version" ]
                 )
             )
 
     '''
-        Will I run into conflicts with similair switches?
+        Will I run into conflicts with similair swithes?
         Does creating groups avoid this?
     '''
     # Build
@@ -223,7 +223,7 @@ def argparser():
             action      = "store_true"                                  ,
             help        = """
             Force an operation.  I'm not 100% on what this will entail
-            witch each primary switch.
+            with each primary swith.
             """                                                         ,
             )
 
@@ -294,7 +294,7 @@ def argparser():
             action      = "store_true"                                  ,
             help        = """
             Force an operation.  I'm not 100% on what this will entail
-            witch each primary switch.
+            with each primary swith.
             """                                                         ,
             )
 
@@ -370,17 +370,17 @@ def argparser():
             action  = "store_true"                                      ,
             help    = """
             List what package provides the specified file.  This can
-            be used along side other switches, which seek information
+            be used along side other swithes, which seek information
             on packages listed in the arguments.
             """                                                         ,
             )
     '''
-    What provides (-w) is not mutually exclusive to any other switch
-    provided with the primary switch.  If what provides is included
-    with other switches, then file names will be ignored by other queued
+    What provides (-w) is not mutually exclusive to any other swith
+    provided with the primary swith.  If what provides is included
+    with other swithes, then file names will be ignored by other queued
     operations, but only if the file actuall exists in the filesystem;
     Otherwise, an exception will be raised.  If a file is passed without
-    the what provides switch, an exception will be raised.
+    the what provides swith, an exception will be raised.
     '''
 
     # Query
@@ -455,17 +455,17 @@ def argparser():
             action  = "store_true"                                      ,
             help    = """
             List what package provides the specified file.  This can
-            be used along side other switches, which seek information
+            be used along side other swithes, which seek information
             on packages listed in the arguments.
             """                                                         ,
             )
     '''
-    What provides (-w) is not mutually exclusive to any other switch
-    provided with the primary switch.  If what provides is included
-    with other switches, then file names will be ignored by other queued
+    What provides (-w) is not mutually exclusive to any other swith
+    provided with the primary swith.  If what provides is included
+    with other swithes, then file names will be ignored by other queued
     operations, but only if the file actuall exists in the filesystem;
     Otherwise, an exception will be raised.  If a file is passed without
-    the what provides switch, an exception will be raised.
+    the what provides swith, an exception will be raised.
     '''
     
     # Remove
@@ -494,7 +494,7 @@ def argparser():
             action      = "store_true"                                  ,
             help        = """
             Force an operation.  I'm not 100% on what this will entail
-            witch each primary switch.
+            with each primary swith.
             """                                                         ,
             )
 
@@ -550,11 +550,16 @@ def argparser():
             )
 
     sync.add_argument(
-            "-d"                    ,
-            "--downgrade"           ,
-            action  = "store_true"  ,
-            help    = """
-            """                     ,
+            "-d"                                                            ,
+            "--downgrade"                                                   ,
+            action          = "store_true"                                  ,
+            help            = """
+            Downgrade a package, from a remotely hosted repository, to
+            either a specified version, or date.  Multiple date formats
+            are accepted, and automatically determined, providing the
+            date format is synactically correct, and a recognized format.
+            A Unix epocal timestamp is an acceptable date format.
+            """                                                             ,
             )
 
     sync.add_argument(
@@ -563,7 +568,7 @@ def argparser():
             action  = "store_true"                                      ,
             help    = """
             Force an operation.  I'm not 100% on what this will entail
-            witch each primary switch.
+            with each primary swith.
             """                                                         ,
             )
 
@@ -626,7 +631,7 @@ def argparser():
             action  = "store_true"                                      ,
             help    = """
             Force an operation.  I'm not 100% on what this will entail
-            witch each primary switch.
+            with each primary swith.
             """                                                         ,
             )
 
