@@ -68,7 +68,7 @@ A Python3 package manager for RHEL variaties
 
 ## Arguments and switching
 
-Capitals are the primary switches and at least one is required\
+Capitals are the primary switches and at least one is required.\
 Primary switches can be combined (possible?), which will cause\
 tasks to queue up, and be performed in.\
 the most ideal order.\
