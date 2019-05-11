@@ -16,6 +16,10 @@ A Python3 package manager for RHEL variaties
 		* alerts and confirmation ( all or package specific )
 		* exclude packages
 * Ensure compatibility with Cloudlinux alt-python
+* Architectures
+	* x86_64
+	* ARM
+	* no i386
 
 
 ## Dependancies
