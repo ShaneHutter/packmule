@@ -12,3 +12,22 @@ PackMule
     License:
         GNU GPLv3
 """
+
+from PackMule        import (
+        STATUS  ,
+        )
+from PackMule.args  import argparser
+
+from sys            import exit
+
+def main( **argparser ):
+    """
+        Main code block
+    """
+    return exit( status )
+
+if __main__ == '__name__':
+    """
+        Start main
+    """
+    status  = STATUS[ "clean" ]

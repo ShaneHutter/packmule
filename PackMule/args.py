@@ -14,3 +14,9 @@ PackMule
 """
 
 from argparse   import ArgumentParser
+
+def argparser():
+    """
+        Command line arguments for PackMule
+    """
+
