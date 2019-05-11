@@ -28,7 +28,7 @@ A Python3 package manager for RHEL variaties
 	* systemd >= 62 (RHEL core)
 	* curl	(RHEL core)
 	* sqlite3 (RHEL core)
-	* gpgme
+	* gpgme (RHEL core)
 * Distro
 	* CentOS >= 7.6
 	* RHEL >= 7.6
