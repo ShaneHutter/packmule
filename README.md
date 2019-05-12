@@ -122,6 +122,7 @@ Note:  argparse is not suitable for this, a parser must be built.
 		installed, allowing for the package to be included in updates.  Only\
 		information on the select packages will be updated for the repos\
 		database.  This may be a locally hosted repository.
+	* -l,	install listed local rpms
 	* -u,	update local db
 * -U,	Update
 	* -d,	downgrade.  Specify a date in which to downgrade all packages,\
